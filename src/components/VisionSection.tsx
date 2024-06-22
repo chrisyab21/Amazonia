@@ -1,27 +1,15 @@
 import shadowTree from '../assets/images/shadowTree.jpg';
-
+import hero from '../assets/images/hero-bg.png';
+import noche from '../assets/images/AmazoniaNoche.webp';
+import selva from '../assets/images/SelvaVerde.webp';
+import logo from '../assets/images/LogoPrincipal.jpeg';
+import styles from './visionSection.module.css';
 
 export const VisionSection = () => {
   return (
-    <section className="bg-green-950 h-[800px]">
-      <img className="h-full w-full object-cover" src={shadowTree} alt="" />
-    </section>
+    <section className={`${styles.sectionBackground} flex items-center justify-center h-96 sm:h-[450px] md:h-[550px] lg:h-[676px] `}>
+        <img className="absolute w-2/6 h-[42%] md:w-2/6 md:h-[45%] lg:w-2/6 lg:h-[52%] aspect-square" src={logo} alt="Logo Principal" />
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam animi molestiae saepe dicta a, dolorum incidunt veritatis vero nihil temporibus alias repellendus pariatur quam, ex et doloremque, maiores maxime harum!</p>
+      </section>
   );
 };
-
-
-export const VisionSection2 = () => {
-  return (
-    <section className="bg-green-950 h-[600px]">
-      <img className="h-full w-full object-cover" src={shadowTree} alt="" />
-    </section>
-  );
-};
-
-
-/*<div className="h-[600px] flex flex-row justify-center items-center px-4 bg-opacity-40 bg-green-800 gap-4">
-<p className="mb-3 font-normal text-gray-700 dark:text-gray-400"> La amazonia Boliviana alberga mas de 200 especias de fauna y flore animal que deben ser preservadas</p>
-<a href="#">
-  <h5 className="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">Vision</h5>
-</a>
-</div>*/

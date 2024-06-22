@@ -11,5 +11,5 @@ export const MissionSection = () => {
         </a>
       </div>
     </section>
-  )
-}
+  );
+};

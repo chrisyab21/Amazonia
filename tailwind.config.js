@@ -7,7 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'AzulOscuro': '#0b172a',
+        AzulOscuro: '#0b172a',
+        Verde: '#004d26'
+      },
+      aspectRatio: {
+
+        '4/5':'4.5',
       }
     },
   },
