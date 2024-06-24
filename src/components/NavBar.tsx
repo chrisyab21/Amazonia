@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import logo from '../assets/images/Arbol3.png'
 
 export const NavBar = () => {
 
@@ -14,7 +14,7 @@ export const NavBar = () => {
 
 
     return (
-        <nav className="bg-green-950 fixed z-50 w-full">
+        <nav className="bg-green-950 relative sm:fixed sm:bg-transparent z-50 w-full">
             <div className="px-2 sm:px-8 lg:px-12">
                 <div className="relative flex h-16 items-center justify-end">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -46,8 +46,8 @@ export const NavBar = () => {
                         </button>
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
-                        <div className="flex flex-shrink-0 items-center">
-                            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+                        <div className="flex sm:mr-auto items-center">
+                            <img className="h-8 w-auto" src={logo} alt="Your Company" />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-8 ">

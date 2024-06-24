@@ -1,15 +1,30 @@
-import shadowTree from '../assets/images/shadowTree.jpg';
-import hero from '../assets/images/hero-bg.png';
-import noche from '../assets/images/AmazoniaNoche.webp';
-import selva from '../assets/images/SelvaVerde.webp';
+
 import logo from '../assets/images/LogoPrincipal.jpeg';
 import styles from './visionSection.module.css';
+import logo2 from '../assets/images/S-AMZ1.png';
 
 export const VisionSection = () => {
   return (
-    <section className={`${styles.sectionBackground} flex items-center justify-center h-96 sm:h-[450px] md:h-[550px] lg:h-[676px] `}>
-        <img className="absolute w-2/6 h-[42%] md:w-2/6 md:h-[45%] lg:w-2/6 lg:h-[52%] aspect-square" src={logo} alt="Logo Principal" />
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam animi molestiae saepe dicta a, dolorum incidunt veritatis vero nihil temporibus alias repellendus pariatur quam, ex et doloremque, maiores maxime harum!</p>
-      </section>
+    <section className={`${styles.sectionBackground} flex items-center justify-center h-[70vh] sm:aspect-16/8 sm:h-auto`}>
+      <div className=" flex flex-col items-center absolute overflow-hidden gap-2 lg:gap-4">
+        <img src={logo2} alt="Logo" className="w-[12%] sm:w-[10%] h-auto relative" />
+        <h1 className="font-mono text-4xl sm:text-5xl md:text-5xl lg:text-7xl xl:text-7xl text-center">Saving Amazing <br /> Amazonas</h1>
+      </div>
+    </section>
+  );
+};
+
+
+
+export const VisionSection2 = () => {
+  return (
+    <section className={`${styles.sectionBackground} flex items-center justify-center h-[70vh] sm:aspect-16/8 sm:h-auto`}>
+      <div className='flex items-center gap-2 sm:gap-10 justify-center h-auto w-full relative'>
+        <div className="max-h-full relative overflow-hidden">
+          <h1 className='font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center'>Saving Amazing <br /> Amazonas</h1>
+        </div>
+        <img src={logo2} alt="Logo" className="w-4/12 sm:w-3/12 h-auto relative " />
+      </div>
+    </section>
   );
 };
