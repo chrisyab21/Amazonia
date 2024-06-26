@@ -16,7 +16,7 @@ export const VisionSection = () => {
 
 
 
-export const VisionSection2 = () => {
+export const VisionSection3 = () => {
   return (
     <section className={`${styles.sectionBackground} flex items-center justify-center h-[70vh] sm:aspect-16/8 sm:h-auto`}>
       <div className='flex items-center gap-2 sm:gap-10 justify-center h-auto w-full relative'>
