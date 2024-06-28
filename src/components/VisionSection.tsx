@@ -1,29 +1,18 @@
-
-import logo from '../assets/images/LogoPrincipal.jpeg';
-import styles from './visionSection.module.css';
-import logo2 from '../assets/images/S-AMZ1.png';
+import logo4 from '../assets/images/Arbol3.png';
 
 export const VisionSection = () => {
+
   return (
-    <section className={`${styles.sectionBackground} flex items-center justify-center h-[70vh] sm:aspect-16/8 sm:h-auto`}>
-      <div className=" flex flex-col items-center absolute overflow-hidden gap-2 lg:gap-4">
-        <img src={logo2} alt="Logo" className="w-[12%] sm:w-[10%] h-auto relative" />
-        <h1 className="font-mono text-4xl sm:text-5xl md:text-5xl lg:text-7xl xl:text-7xl text-center">Saving Amazing <br /> Amazonas</h1>
-      </div>
-    </section>
-  );
-};
-
-
-
-export const VisionSection3 = () => {
-  return (
-    <section className={`${styles.sectionBackground} flex items-center justify-center h-[70vh] sm:aspect-16/8 sm:h-auto`}>
-      <div className='flex items-center gap-2 sm:gap-10 justify-center h-auto w-full relative'>
-        <div className="max-h-full relative overflow-hidden">
-          <h1 className='font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center'>Saving Amazing <br /> Amazonas</h1>
-        </div>
-        <img src={logo2} alt="Logo" className="w-4/12 sm:w-3/12 h-auto relative " />
+    <section className="flex justify-center items-center bg-green-950 p-20 md:p-20 gap-10 md:gap-6 lg:gap-20">
+      <img src={logo4} alt="Logo" className="hidden lg:block lg:w-[30%] h-auto relative" />
+      <div className=" flex flex-col justify-center items-center gap-6 md:w-10/12 lg:w-6/12">
+        <h5 className="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">Vision</h5>
+        <p className="mb-3 font-normal text-justify text-lg text-gray-700 leading-10 dark:text-gray-400">
+          Contribuir de manera significativa a la lucha contra el cambio climático a través de la implementación de proyectos REDD+ (Reducción de Emisiones por Deforestación y Degradación Forestal), con el objetivo de mitigar las emisiones de gases de efecto invernadero y promover la sostenibilidad ambiental.
+          <br className="md:hidden" />
+          <br className="md:hidden" />
+          Lograr una reducción significativa de las emisiones de gases de efecto invernadero provenientes de la deforestación y la degradación forestal.
+        </p>
       </div>
     </section>
   );

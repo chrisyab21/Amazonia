@@ -1,11 +1,11 @@
-.sectionBackground {
+.headerBackground {
 
     position: relative;
 
 }
 
 
-.sectionBackground::before {
+.headerBackground::before {
 
   content:"";
   position: absolute;
