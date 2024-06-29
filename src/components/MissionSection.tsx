@@ -8,11 +8,10 @@ export const MissionSection = () => {
       <div className=" flex flex-col justify-center items-center gap-6 md:w-10/12 lg:w-6/12">
         <h5 className="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">Mision</h5>
         <p className="mb-3 font-normal text-justify text-lg text-gray-700 leading-10 dark:text-gray-400">
-          Contribuir de manera significativa a la lucha contra el cambio climático a través de la implementación de proyectos REDD+ (Reducción de Emisiones por Deforestación y Degradación Forestal), con el objetivo de mitigar las emisiones de gases de efecto invernadero y promover la sostenibilidad ambiental.
+          Significantly contribute to the fight against climate change through the implementation of REDD+ projects (Reducing Emissions from Deforestation and Forest Degradation), with the goal of mitigating greenhouse gas emissions and promoting environmental sustainability.
           <br className="md:hidden" />
           <br className="md:hidden" />
-          Lograr una reducción significativa de las emisiones de gases de efecto invernadero provenientes de la deforestación y la degradación forestal.
-        </p>
+          Achieve a significant reduction in greenhouse gas emissions from deforestation and forest degradation.        </p>
       </div>
       <img src={logo3} alt="Logo" className="hidden lg:block lg:w-[30%] h-auto relative" />
     </section>

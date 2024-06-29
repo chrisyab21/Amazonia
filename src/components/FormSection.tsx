@@ -1,7 +1,6 @@
-import logo2 from "../assets/images/S-AMZ1.png"
-import logo3 from "../assets/images/Arbol4.png";
+
 import { useForm } from "react-hook-form";
-import { FormEvent, useEffect, useRef } from "react";
+import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef } from "react";
 
 type contactInfo = {
   name: string,
@@ -11,14 +10,17 @@ type contactInfo = {
 
 }
 
-type allowedKey = 'Backspace' | 'Tab' | 'ArrowLeft' | 'ArrowRight' | 'Delete' | 'Enter' | 'Shift' | 'Control' | 'Alt' | 'Meta' | 'Escape';
+type allowedKey = 'Backspace' | 'Tab' | 'ArrowLeft' | 'ArrowRight' | 'Delete' | 'Enter' | 'Shift' | 'Control' | 'Alt' | 'Meta' | 'Escape' | ' ';
+
+
 
 export const FormSection = () => {
 
 
-  const nameInputRef = useRef<HTMLInputElement | null>(null);
-  const emailInputRef = useRef<HTMLInputElement | null>(null);
-  const subjectInputRef = useRef<HTMLInputElement | null>(null);
+  /*   
+    const nameInputRef = useRef<HTMLInputElement | null>(null);
+    const emailInputRef = useRef<HTMLInputElement | null>(null);
+    const subjectInputRef = useRef<HTMLInputElement | null>(null); */
 
 
   const {
@@ -29,49 +31,72 @@ export const FormSection = () => {
     formState: { errors, isSubmitted }
   } = useForm<contactInfo>();
 
-  //const [first, setFirst] = useState<boolean>(false)
 
-  const nameRegEx = new RegExp("^[a-zA-Z]+$");
-
-
+  const nameRegEx = /^[a-zA-Z\s]*$/;
+  const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 
+  /*   const handleKeyDown = (event: KeyboardEvent) => {
+      // Prevenir la entrada de números
+  
+      const allowedKeys: allowedKey[] = [
+        'Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter',
+        'Shift', 'Control', 'Alt', 'Meta', 'Escape'
+      ];
+  
+      if (!nameRegEx.test(event.key) && !allowedKeys.includes(event.key as allowedKey)) {
+        event.preventDefault();
+      }
+  
+    }; */
 
-  useEffect(() => {
+  const handleOnTyped = (event: React.KeyboardEvent<HTMLInputElement>) => {
 
-    if (nameInputRef.current) {
+    const typed_Key = event.key
 
-      const handleKeyDown = (event: KeyboardEvent) => {
-        // Prevenir la entrada de números
+    const allowedKeys: allowedKey[] = [
+      'Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter',
+      'Shift', 'Control', 'Alt', 'Meta', 'Escape', ' '
+    ];
 
-        const allowedKeys: allowedKey[] = [
-          'Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter',
-          'Shift', 'Control', 'Alt', 'Meta', 'Escape'
-        ];
-
-        if (!nameRegEx.test(event.key) && !allowedKeys.includes(event.key as allowedKey)) {
-          event.preventDefault();
-        }
-
-      };
-
-      nameInputRef.current.addEventListener('keydown', handleKeyDown);
-
-      return () => {
-        if (nameInputRef.current) {
-          nameInputRef.current.removeEventListener('keydown', handleKeyDown);
-        }
-      };
+    if (!nameRegEx.test(typed_Key) && !allowedKeys.includes(typed_Key as allowedKey)) {
+      event.preventDefault();
     }
 
 
-  }, [nameInputRef.current]);
+  }
+
+  /*   const formRef = useRef<HTMLFormElement>(null)
+  
+    useEffect(() => {
+  
+      if (formRef.current) {
+  
+        const inputh = formRef.current.querySelectorAll('input')
+  
+        inputh.forEach((input) => {
+  
+          input.addEventListener('keydown', handleKeyDown);
+  
+  
+        });
+  
+        return () => {
+  
+          inputh.forEach((input) => {
+  
+            input.removeEventListener('keydown', handleKeyDown);
+  
+          });
+  
+        }
+  
+      }
+  
+    }, []); */
 
 
-
-
-
-  // const { ref, ...rest } = register('firstName');
+  // let nameValue = watch('name');
 
 
   const onSubmit = (data: contactInfo) => {
@@ -81,81 +106,94 @@ export const FormSection = () => {
 
   }
 
+
+
   return (
     <section className="h-[600px] p-10 bg-indigo-900">
       <div className=" flex flex-col items-center gap-10">
         <h1 className="text-5xl">Contactanos</h1>
-        <form className={`flex flex-col w-full gap-5`} onSubmit={handleSubmit((data) => onSubmit(data))}>
+        <form className={`flex flex-col w-full gap-5`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
           <div className={`flex flex-col gap-2 ${errors.name && "-mb-2"}`}>
-            <input type="text" className="basis-12 w-full rounded-md"
+            <input className="basis-12 w-full rounded-md indent-2" type="text" placeholder="Name"
               {...register('name', {
                 required: {
                   value: true,
-                  message: "Ingrese su nombre"
+                  message: "Enter your name"
                 },
                 minLength: {
                   value: 4,
-                  message: 'El nombre debe tener al menos 4 caracteres'
+                  message: 'The name cannot be less than 4 characters'
                 },
                 maxLength: {
                   value: 30,
-                  message: 'El nombre no puede tener más de 20 caracteres'
+                  message: 'The name cannot be more than 20 characters'
                 },
                 pattern: {
                   value: nameRegEx,
-                  message: 'Nombre no valido'
+                  message: 'Name cannot have symbols'
                 }
               })}
               ref={(e) => {
                 register('name').ref(e);
-                nameInputRef.current = e;
+                // nameInputRef.current = e;
               }}
+              onKeyDown={(event) => handleOnTyped(event)}
             />
             {errors.name && <span >{`${errors.name.message}`}</span>}
+            {/* <span >{`El valor es: ${nameValue}`}</span> */}
           </div>
           <div className={`flex flex-col gap-2 ${errors.email && "-mb-2"}`}>
-            <input type="email" className="basis-12 w-full rounded-md"
+            <input className="basis-12 w-full rounded-md indent-2" type="email" placeholder="Email" maxLength={160}
               {...register('email', {
                 required: {
                   value: true,
-                  message: "Ingrese su correo"
+                  message: "Enter your email"
                 },
-                minLength: 4,
-                maxLength: 30,
+                maxLength: {
+                  value: 150,
+                  message: "Email cannot have more than 150 characters"
+                },
                 pattern: {
-                  value: nameRegEx,
-                  message: 'Correo no valido'
+                  value: emailRegEx,
+                  message: 'Invalid email'
                 }
               })}
               ref={(e) => {
                 register('email').ref(e);
-                emailInputRef.current = e;
+                //emailInputRef.current = e;
               }}
             />
             {errors.email && <span className="msg">{`${errors.email.message}`}</span>}
           </div>
           <div className={`flex flex-col gap-2 ${errors.subject && "-mb-2"}`}>
-            <input type="text" className="basis-12 w-full rounded-md"
+            <input className="basis-12 w-full rounded-md indent-2"
+              type="text"
+              placeholder="Subject"
+              maxLength={70}
+              minLength={4}
               {...register('subject', {
                 required: {
                   value: true,
-                  message: "Ingrese el titulo"
+                  message: "Enter the subject"
                 },
-                minLength: 4,
-                maxLength: 20,
-                pattern: {
-                  value: nameRegEx,
-                  message: 'Correo no valido'
-                }
+                minLength: {
+                  value: 4,
+                  message: "Subject cannot be less than 4 characters"
+                },
+                maxLength: {
+                  value: 60,
+                  message: "Subject cannot be more than 60 characters"
+                },
               })}
               ref={(e) => {
                 register('subject').ref(e);
-                subjectInputRef.current = e;
+                //subjectInputRef.current = e;
               }}
+              onKeyDown={(event) => handleOnTyped(event)}
             />
             {errors.subject && <span className="msg">{`${errors.subject.message}`}</span>}
           </div>
-          <textarea title="Hola mi bro" className="w-full rounded-md" name="message" rows={7} placeholder="Message"></textarea>
+          <textarea title="Well done" className="w-full rounded-md resize-none p-2" name="message" rows={7} placeholder="Message"></textarea>
           <button className="bg-green-600 basis-12 w-full rounded-md">Enviar</button>
         </form>
       </div>
