@@ -1,7 +1,9 @@
 import { FC } from "react"
 import { NavBar } from "./NavBar"
-import { VisionSection } from "./VisionSection"
+import { Header } from "./Header"
 import { MissionSection } from "./MissionSection"
+import { FormSection } from "./FormSection"
+import { VisionSection } from "./VisionSection"
 
 
 
@@ -10,8 +12,10 @@ export const HomePage: FC = () => {
   return (
     <div className="h-full w-full">
       <NavBar />
-      <VisionSection />
+      <Header />
       <MissionSection />
+      <VisionSection />    
+      <FormSection/> 
     </div>
   )
 }
