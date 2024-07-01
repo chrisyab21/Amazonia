@@ -1,7 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef } from "react";
-
+import logo3 from '../assets/images/Arbol3.png'
 type contactInfo = {
   name: string,
   email: string,
@@ -110,62 +110,65 @@ export const FormSection = () => {
 
   return (
     <section className="h-[600px] p-10 bg-indigo-900">
-      <div className=" flex flex-col items-center gap-10">
-        <h1 className="text-5xl">Contactanos</h1>
-        <form className={`flex flex-col w-full gap-5`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
-          <div className={`flex flex-col gap-2 ${errors.name && "-mb-2"}`}>
-            <input className="basis-12 w-full rounded-md indent-2" type="text" placeholder="Name"
-              {...register('name', {
-                required: {
-                  value: true,
-                  message: "Enter your name"
-                },
-                minLength: {
-                  value: 4,
-                  message: 'The name cannot be less than 4 characters'
-                },
-                maxLength: {
-                  value: 30,
-                  message: 'The name cannot be more than 20 characters'
-                },
-                pattern: {
-                  value: nameRegEx,
-                  message: 'Name cannot have symbols'
-                }
-              })}
-              ref={(e) => {
-                register('name').ref(e);
-                // nameInputRef.current = e;
-              }}
-              onKeyDown={(event) => handleOnTyped(event)}
-            />
-            {errors.name && <span >{`${errors.name.message}`}</span>}
-            {/* <span >{`El valor es: ${nameValue}`}</span> */}
+      <div className="flex justify-evenly items-center gap-20 mt-10">
+        <img src={logo3} alt="Logo" className="hidden h-auto lg:block lg:w-[35%] xl:w-[25%]" />
+        <form className={`flex flex-col basis-full items-center gap-5 lg:basis-7/12`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
+          <h3 className="text-5xl self-center mb-2">Contactanos</h3>
+          <div className={`flex flex-col w-full gap-5 md:flex-row`}>
+            <div className={`flex flex-col gap-2 md:basis-2/6 md:flex-grow ${errors.name && "-mb-2"}`}>
+              <input className="basis-12 w-full rounded-md indent-2" type="text" placeholder="Name"
+                {...register('name', {
+                  required: {
+                    value: true,
+                    message: "Enter your name"
+                  },
+                  minLength: {
+                    value: 4,
+                    message: 'The name cannot be less than 4 characters'
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: 'The name cannot be more than 20 characters'
+                  },
+                  pattern: {
+                    value: nameRegEx,
+                    message: 'Name cannot have symbols'
+                  }
+                })}
+                ref={(e) => {
+                  register('name').ref(e);
+                  // nameInputRef.current = e;
+                }}
+                onKeyDown={(event) => handleOnTyped(event)}
+              />
+              {errors.name && <span >{`${errors.name.message}`}</span>}
+              {/* <span >{`El valor es: ${nameValue}`}</span> */}
+            </div>
+            <div className={`flex flex-col gap-2 w-full md:basis-2/6 md:flex-grow ${errors.email && "-mb-2"}`}>
+              <input className="basis-12 w-full rounded-md indent-2" type="email" placeholder="Email" maxLength={160}
+                {...register('email', {
+                  required: {
+                    value: true,
+                    message: "Enter your email"
+                  },
+                  maxLength: {
+                    value: 150,
+                    message: "Email cannot have more than 150 characters"
+                  },
+                  pattern: {
+                    value: emailRegEx,
+                    message: 'Invalid email'
+                  }
+                })}
+                ref={(e) => {
+                  register('email').ref(e);
+                  //emailInputRef.current = e;
+                }}
+              />
+              {errors.email && <span className="msg">{`${errors.email.message}`}</span>}
+            </div>
           </div>
-          <div className={`flex flex-col gap-2 ${errors.email && "-mb-2"}`}>
-            <input className="basis-12 w-full rounded-md indent-2" type="email" placeholder="Email" maxLength={160}
-              {...register('email', {
-                required: {
-                  value: true,
-                  message: "Enter your email"
-                },
-                maxLength: {
-                  value: 150,
-                  message: "Email cannot have more than 150 characters"
-                },
-                pattern: {
-                  value: emailRegEx,
-                  message: 'Invalid email'
-                }
-              })}
-              ref={(e) => {
-                register('email').ref(e);
-                //emailInputRef.current = e;
-              }}
-            />
-            {errors.email && <span className="msg">{`${errors.email.message}`}</span>}
-          </div>
-          <div className={`flex flex-col gap-2 ${errors.subject && "-mb-2"}`}>
+          <div className={`flex flex-col w-full gap-2 ${errors.subject && "-mb-2"}`}>
             <input className="basis-12 w-full rounded-md indent-2"
               type="text"
               placeholder="Subject"

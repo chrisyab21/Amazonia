@@ -17,3 +17,29 @@
   filter: blur(0.5px);/* Ajusta el blur según necesites */
   
 }
+
+
+/* 
+<uniquifier>: Use a unique and descriptive class name
+<weight>: Use a value from 300 to 900 
+*/
+
+.rubikFont {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: rgb(214, 240, 213);
+}
+
+
+.interFont {
+  font-family: "Inter", sans-serif;
+  margin-bottom: 20px;
+  padding: 0;
+  font-size: 48px;
+  font-weight: 700;
+  color: rgb(211, 235, 211);
+}
+
+

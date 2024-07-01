@@ -13,7 +13,7 @@ export const MissionSection = () => {
           <br className="md:hidden" />
           Achieve a significant reduction in greenhouse gas emissions from deforestation and forest degradation.        </p>
       </div>
-      <img src={logo3} alt="Logo" className="hidden lg:block lg:w-[30%] h-auto relative" />
+      <img src={logo3} alt="Logo" className="hidden h-auto  relative lg:block lg:w-[30%]" />
     </section>
   );
 };
