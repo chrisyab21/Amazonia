@@ -136,10 +136,10 @@ export const FormSection = () => {
       <div className="flex w-full justify-evenly items-center">
         <img src={logo3} alt="Logo" className="hidden h-auto lg:block lg:w-[30%] xl:w-[30%] mr-10" />
         <form className={`flex flex-col basis-full items-center gap-5 lg:basis-6/12`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
-          <h3 className="font-rubik font-medium text-5xl self-center mb-2">Contactanos</h3>
+          <h3 className="font-rubik font-medium text-3xl sm:text-4xl self-center mb-2">Contact us</h3>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>
             <div className={`flex flex-col gap-2 md:basis-2/6 md:flex-grow ${errors.name && "-mb-2"}`}>
-              <input className="basis-12 w-full rounded-md indent-2" type="text" placeholder="Name"
+              <input className="basis-12 w-full rounded-md indent-2" type="text" placeholder="Name" required
                 {...register('name', {
                   required: {
                     value: true,
@@ -155,7 +155,7 @@ export const FormSection = () => {
                   },
                   pattern: {
                     value: nameRegEx,
-                    message: 'Name cannot have symbols'
+                    message: 'A name cannot have symbols'
                   }
                 })}
                 ref={(e) => {
@@ -168,7 +168,7 @@ export const FormSection = () => {
               {/* <span >{`El valor es: ${nameValue}`}</span> */}
             </div>
             <div className={`flex flex-col gap-2 w-full md:basis-2/6 md:flex-grow ${errors.email && "-mb-2"}`}>
-              <input className="basis-12 w-full rounded-md indent-2" type="email" placeholder="Email" maxLength={160}
+              <input className="basis-12 w-full rounded-md indent-2" type="email" placeholder="Email" maxLength={160} required
                 {...register('email', {
                   required: {
                     value: true,
@@ -194,6 +194,7 @@ export const FormSection = () => {
           <div className={`flex flex-col w-full gap-2 ${errors.subject && "-mb-2"}`}>
             <input className="basis-12 w-full rounded-md indent-2"
               type="text"
+              required
               placeholder="Subject"
               maxLength={70}
               minLength={4}
@@ -219,7 +220,7 @@ export const FormSection = () => {
             />
             {errors.subject && <span className="msg">{`${errors.subject.message}`}</span>}
           </div>
-          <textarea className="w-full rounded-md resize-none p-2" name="message" title="Well done"
+          <textarea className="w-full rounded-md resize-none p-2" name="message" title="Well done" required
             value={textAreaValue}
             rows={7}
             maxLength={600}
