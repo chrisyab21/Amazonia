@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        rubik: ['Rubik', 'sans-serif'],
+        roboto: 'Roboto'
+      },
       colors: {
         AzulOscuro: '#0b172a',
         Verde: '#004d26'

@@ -9,7 +9,7 @@ export const NavBar = () => {
 
         setMenuState(state => !state)
 
-        const hola:string = `asdasd ${menuState}`
+        const hola: string = `asdasd ${menuState}`
     }
 
 
@@ -26,7 +26,7 @@ export const NavBar = () => {
                             aria-expanded="false"
                             onClick={() => onClickMenu()}
                         >
-                            
+
                             {/* <!--
             Icon when menu is closed.
 
@@ -49,15 +49,12 @@ export const NavBar = () => {
                         <div className="flex sm:mr-auto items-center">
                             <img className="h-8 w-auto" src={logo} alt="Your Company" />
                         </div>
-                        <div className="hidden sm:ml-6 sm:block">
-                            <div className="flex space-x-8 ">
-                                {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                                <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-                                <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-                                <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-                                <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
-                            </div>
-                        </div>
+                        <ul className="hidden gap-10 sm:ml-6 sm:flex sm:items-center">
+                            <li><a href="#" className="h-full rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">PROJECT</a></li>
+                            <li><a href="#vision" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">VISION</a></li>
+                            <li><a href="#mission" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">MISSION</a></li>
+                            <li><a href="#contact" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">CONTACT US</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -67,10 +64,10 @@ export const NavBar = () => {
                 (<div className="sm:hidden" id="mobile-menu">
                     <div className="space-y-1 px-2 pb-3 pt-2">
                         {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                        <a href="#" className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Dashboard</a>
-                        <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-                        <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-                        <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+                        <a href="#project" className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">PROJECT</a>
+                        <a href="#vision" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">VISION</a>
+                        <a href="#mission" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">MISSION</a>
+                        <a href="#contact" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">CONTACT</a>
                     </div>
                 </div>)
             }

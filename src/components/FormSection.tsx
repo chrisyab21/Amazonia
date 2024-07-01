@@ -1,7 +1,9 @@
 
 import { useForm } from "react-hook-form";
-import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef } from "react";
+import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
 import logo3 from '../assets/images/Arbol3.png'
+
+
 type contactInfo = {
   name: string,
   email: string,
@@ -21,6 +23,8 @@ export const FormSection = () => {
     const nameInputRef = useRef<HTMLInputElement | null>(null);
     const emailInputRef = useRef<HTMLInputElement | null>(null);
     const subjectInputRef = useRef<HTMLInputElement | null>(null); */
+
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
 
   const {
@@ -50,6 +54,21 @@ export const FormSection = () => {
   
     }; */
 
+
+  const [textAreaValue, setTextAreaValue] = useState('');
+
+
+  const limitTextAreaRows = (event: ChangeEvent<HTMLTextAreaElement>) => {
+
+    const lines = event.target.value.split('\n');
+    if (lines.length > 7) {
+      setTextAreaValue(lines.slice(0, 7).join('\n'));
+    } else {
+      setTextAreaValue(event.target.value);
+    }
+  };
+
+
   const handleOnTyped = (event: React.KeyboardEvent<HTMLInputElement>) => {
 
     const typed_Key = event.key
@@ -65,6 +84,8 @@ export const FormSection = () => {
 
 
   }
+
+
 
   /*   const formRef = useRef<HTMLFormElement>(null)
   
@@ -99,6 +120,7 @@ export const FormSection = () => {
   // let nameValue = watch('name');
 
 
+
   const onSubmit = (data: contactInfo) => {
 
 
@@ -109,11 +131,12 @@ export const FormSection = () => {
 
 
   return (
-    <section className="h-[600px] p-10 bg-indigo-900">
-      <div className="flex justify-evenly items-center gap-20 mt-10">
-        <img src={logo3} alt="Logo" className="hidden h-auto lg:block lg:w-[35%] xl:w-[25%]" />
-        <form className={`flex flex-col basis-full items-center gap-5 lg:basis-7/12`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
-          <h3 className="text-5xl self-center mb-2">Contactanos</h3>
+    
+    <section id="contact" className="h-[600px] flex items-center p-12 bg-indigo-900">
+      <div className="flex w-full justify-evenly items-center">
+        <img src={logo3} alt="Logo" className="hidden h-auto lg:block lg:w-[30%] xl:w-[30%] mr-10" />
+        <form className={`flex flex-col basis-full items-center gap-5 lg:basis-6/12`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
+          <h3 className="font-rubik font-medium text-5xl self-center mb-2">Contactanos</h3>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>
             <div className={`flex flex-col gap-2 md:basis-2/6 md:flex-grow ${errors.name && "-mb-2"}`}>
               <input className="basis-12 w-full rounded-md indent-2" type="text" placeholder="Name"
@@ -196,7 +219,14 @@ export const FormSection = () => {
             />
             {errors.subject && <span className="msg">{`${errors.subject.message}`}</span>}
           </div>
-          <textarea title="Well done" className="w-full rounded-md resize-none p-2" name="message" rows={7} placeholder="Message"></textarea>
+          <textarea className="w-full rounded-md resize-none p-2" name="message" title="Well done"
+            value={textAreaValue}
+            rows={7}
+            maxLength={600}
+            ref={textAreaRef}
+            placeholder="Message"
+            onChange={(event) => limitTextAreaRows(event)}
+          ></textarea>
           <button className="bg-green-600 basis-12 w-full rounded-md">Enviar</button>
         </form>
       </div>
