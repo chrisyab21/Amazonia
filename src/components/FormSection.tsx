@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
 import logo3 from '../assets/images/Arbol3.png'
+import emailjs from "@emailjs/browser";
 
 
 type contactInfo = {
@@ -9,7 +10,13 @@ type contactInfo = {
   email: string,
   subject: string,
   message: string
+}
 
+type emailTemplate = {
+  from_name: string,
+  user_email: string,
+  subject: string,
+  message: string
 }
 
 type allowedKey = 'Backspace' | 'Tab' | 'ArrowLeft' | 'ArrowRight' | 'Delete' | 'Enter' | 'Shift' | 'Control' | 'Alt' | 'Meta' | 'Escape' | ' ';
@@ -32,6 +39,7 @@ export const FormSection = () => {
     handleSubmit,
     watch,
     setError,
+    reset,
     formState: { errors, isSubmitted }
   } = useForm<contactInfo>();
 
@@ -121,18 +129,40 @@ export const FormSection = () => {
 
 
 
-  const onSubmit = (data: contactInfo) => {
+  const onSubmit = async (formData: contactInfo) => {
 
 
+    const template: emailTemplate = {
 
+      from_name: formData.name,
+      user_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+
+    }
+
+
+    try {
+      const result = await emailjs.send('service_jbopp5q', 'template_3bbqb9t', template, 'kN4sHiMZVLkiLbyly' );
+
+      console.log('SUCCESS!', result.status, result.text);
+
+      reset();
+
+    } catch (error:any) {
+
+      console.log('FAILED...', error);
+    }
 
   }
 
 
 
+
+
   return (
-    
-    <section id="contact" className="h-[600px] flex items-center p-12 bg-indigo-900">
+
+    <section id="contact" className="h-[600px] flex items-center p-12 bg-gray-700">
       <div className="flex w-full justify-evenly items-center">
         <img src={logo3} alt="Logo" className="hidden h-auto lg:block lg:w-[30%] xl:w-[30%] mr-10" />
         <form className={`flex flex-col basis-full items-center gap-5 lg:basis-6/12`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
@@ -220,7 +250,8 @@ export const FormSection = () => {
             />
             {errors.subject && <span className="msg">{`${errors.subject.message}`}</span>}
           </div>
-          <textarea className="w-full rounded-md resize-none p-2" name="message" title="Well done" required
+          <textarea className="w-full rounded-md resize-none p-2" name="message" title="Well done"
+            required
             value={textAreaValue}
             rows={7}
             maxLength={600}
