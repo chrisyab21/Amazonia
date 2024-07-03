@@ -1,7 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
-import logo3 from '../assets/images/Arbol3.png'
+import amazonGif from '../assets/images/NFTS S-AMZ.gif'
 import emailjs from "@emailjs/browser";
 
 
@@ -143,13 +143,13 @@ export const FormSection = () => {
 
 
     try {
-      const result = await emailjs.send('service_jbopp5q', 'template_3bbqb9t', template, 'kN4sHiMZVLkiLbyly' );
+      const result = await emailjs.send('service_jbopp5q', 'template_3bbqb9t', template, 'kN4sHiMZVLkiLbyly');
 
       console.log('SUCCESS!', result.status, result.text);
 
       reset();
 
-    } catch (error:any) {
+    } catch (error: any) {
 
       console.log('FAILED...', error);
     }
@@ -162,10 +162,13 @@ export const FormSection = () => {
 
   return (
 
-    <section id="contact" className="h-[600px] flex items-center p-12 bg-gray-700">
-      <div className="flex w-full justify-evenly items-center">
-        <img src={logo3} alt="Logo" className="hidden h-auto lg:block lg:w-[30%] xl:w-[30%] mr-10" />
-        <form className={`flex flex-col basis-full items-center gap-5 lg:basis-6/12`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
+    <section id="contact" className="h-[600px] flex p-16 lg:p-20 bg-gray-700">
+      <div className="bg-green-500 flex w-full h-full justify-evenly">
+        <div className="hidden lg:flex flex-col justify-center p-4 basis-4/12 flex-shrink gap-10 bg-red-600">
+          <h3 className="font-rubik text-2xl bg-blue-500 text-center">Nfts Gallery</h3>
+          <img src={amazonGif} alt="Logo" className="h-auto bg-purple-500" />
+        </div>
+        <form className={`bg-orange-500 flex flex-col items-center basis-full gap-5 lg:basis-7/12 `} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
           <h3 className="font-rubik font-medium text-3xl sm:text-4xl self-center mb-2">Contact us</h3>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>
             <div className={`flex flex-col gap-2 md:basis-2/6 md:flex-grow ${errors.name && "-mb-2"}`}>
