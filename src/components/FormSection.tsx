@@ -5,6 +5,7 @@ import amazonGif from '../assets/images/NFTS S-AMZ.gif'
 import arbol4 from '../assets/images/Arbol4.png'
 import arbol3 from '../assets/images/Arbol3.png'
 import emailjs from "@emailjs/browser";
+import { WhatsAppButton } from "./WhatsAppButton";
 
 
 type contactInfo = {
@@ -164,14 +165,20 @@ export const FormSection = () => {
 
   return (
 
-    <section id="contact" className="h-[600px] flex p-16 lg:p-20 bg-gray-700">
-      <div className="bg-green-500 flex w-full h-full justify-evenly">
-        <div className="hidden lg:flex flex-col basis-4/12 max-w-md justify-center  flex-grow-0 flex-shrink gap-5 bg-red-600">
-          <h3 className="font-rubik text-2xl bg-blue-500 text-center">Nfts Gallery</h3>
-          <img src={amazonGif} alt="Logo" className="h-auto bg-purple-500" />
+    <section id="contact" className="h-[600px] flex p-20 bg-gray-700">
+      <div className=" flex w-full h-full gap-12 lg:pl-[5%]">
+        <div className="hidden md:flex flex-col basis-[380px] max-w-sm flex-shrink gap-10">
+          <h3 className="font-rubik text-3xl font-semibold text-center">Nfts Gallery</h3>
+          <img src={amazonGif} alt="Logo" className="h-auto rounded-xl" />
         </div>
-        <form className={`bg-orange-500 flex flex-col items-center basis-full gap-5 lg:basis-7/12 `} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
-          <h3 className="font-rubik font-medium text-3xl sm:text-4xl self-center mb-2">Contact us</h3>
+        <form className={` flex flex-col gap-5 flex-grow flex-shrink-0`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
+          <div className="flex">
+            <h3 className="font-rubik font-medium text-3xl sm:text-4xl self-center mb-2">Contact us</h3>
+            <div className="ml-auto flex items-center">
+              <a href="mailto:contacto@assetxtokens.io" className="text-blue-500 hover:text-green-500 underline">contacto@assetxtokens.io</a>
+              <WhatsAppButton />
+            </div>
+          </div>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>
             <div className={`flex flex-col gap-2 md:basis-2/6 md:flex-grow ${errors.name && "-mb-2"}`}>
               <input className="basis-12 w-full rounded-md indent-2" type="text" placeholder="Name" required
@@ -182,11 +189,11 @@ export const FormSection = () => {
                   },
                   minLength: {
                     value: 4,
-                    message: 'The name cannot be less than 4 characters'
+                    message: 'Name must be at least 4 characters'
                   },
                   maxLength: {
                     value: 30,
-                    message: 'The name cannot be more than 20 characters'
+                    message: 'Name must be less than 20 characters'
                   },
                   pattern: {
                     value: nameRegEx,
@@ -255,7 +262,7 @@ export const FormSection = () => {
             />
             {errors.subject && <span className="msg">{`${errors.subject.message}`}</span>}
           </div>
-          <textarea className="w-full rounded-md resize-none p-2" name="message" title="Well done"
+          <textarea className="flex-shrink w-full rounded-md resize-none p-2" name="message" title="Well done"
             required
             value={textAreaValue}
             rows={7}
@@ -264,7 +271,7 @@ export const FormSection = () => {
             placeholder="Message"
             onChange={(event) => limitTextAreaRows(event)}
           ></textarea>
-          <button className="bg-green-600 basis-12 w-full rounded-md">Enviar</button>
+          <button className="bg-green-600 basis-12 w-full flex-shrink-0 rounded-md">Enviar</button>
         </form>
       </div>
     </section>
