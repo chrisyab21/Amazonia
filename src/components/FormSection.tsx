@@ -165,18 +165,17 @@ export const FormSection = () => {
 
   return (
 
-    <section id="contact" className="h-[600px] flex p-20 bg-gray-700">
-      <div className=" flex w-full h-full gap-12 lg:pl-[5%]">
-        <div className="hidden md:flex flex-col basis-[380px] max-w-sm flex-shrink gap-10">
-          <h3 className="font-rubik text-3xl font-semibold text-center">Nfts Gallery</h3>
+    <section id="contact" className="h-[600px] flex py-20 px-14 sm:p-20 lg:px-28  bg-gray-700">
+      <div className="bg-white flex w-full h-full gap-[5%] lg:pl-[5%]">
+        <div className="hidden md:flex flex-col basis-[380px] max-w-sm shrink-[2] gap-10">
+          <h3 className="font-rubik text-3xl text-gray-300 font-semibold text-center">NFTs COLLECTION</h3>
           <img src={amazonGif} alt="Logo" className="h-auto rounded-xl" />
         </div>
-        <form className={` flex flex-col gap-5 flex-grow flex-shrink-0`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
-          <div className="flex">
-            <h3 className="font-rubik font-medium text-3xl sm:text-4xl self-center mb-2">Contact us</h3>
-            <div className="ml-auto flex items-center">
-              <a href="mailto:contacto@assetxtokens.io" className="text-blue-500 hover:text-green-500 underline">contacto@assetxtokens.io</a>
-              <WhatsAppButton />
+        <form className={`bg-orange-400 flex flex-col  gap-5 flex-grow`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
+          <div className="flex justify-center flex-wrap bg-green-800">
+            <h3 className="bg-red-600 font-rubik font-medium text-3xl text-gray-300 sm:text-4xl self-center mb-2">WORK WITH US</h3>
+            <div className="ml-auto w-full text-center bg-yellow-600 items-center ">
+              <a href="mailto:contacto@assetxtokens.io" className="text-blue-500 hover:text-green-500 underline">contacto@assetxtokens.io</a>      
             </div>
           </div>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>
