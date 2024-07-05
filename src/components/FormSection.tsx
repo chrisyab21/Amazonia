@@ -2,6 +2,8 @@
 import { useForm } from "react-hook-form";
 import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
 import amazonGif from '../assets/images/NFTS S-AMZ.gif'
+import arbol4 from '../assets/images/Arbol4.png'
+import arbol3 from '../assets/images/Arbol3.png'
 import emailjs from "@emailjs/browser";
 
 
@@ -164,7 +166,7 @@ export const FormSection = () => {
 
     <section id="contact" className="h-[600px] flex p-16 lg:p-20 bg-gray-700">
       <div className="bg-green-500 flex w-full h-full justify-evenly">
-        <div className="hidden lg:flex flex-col justify-center p-4 basis-4/12 flex-shrink gap-10 bg-red-600">
+        <div className="hidden lg:flex flex-col basis-4/12 max-w-md justify-center  flex-grow-0 flex-shrink gap-5 bg-red-600">
           <h3 className="font-rubik text-2xl bg-blue-500 text-center">Nfts Gallery</h3>
           <img src={amazonGif} alt="Logo" className="h-auto bg-purple-500" />
         </div>
