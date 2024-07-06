@@ -146,7 +146,11 @@ export const FormSection = () => {
 
 
     try {
-      const result = await emailjs.send('service_jbopp5q', 'template_3bbqb9t', template, 'kN4sHiMZVLkiLbyly');
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        template,
+        import.meta.env.VITE_EMAILJS_ACCOUNT_PUBLIC_KEY);
 
       console.log('SUCCESS!', result.status, result.text);
 
@@ -172,10 +176,10 @@ export const FormSection = () => {
           <img src={amazonGif} alt="Logo" className="h-auto rounded-xl" />
         </div>
         <form className={`bg-orange-400 flex flex-col  gap-5 flex-grow`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
-          <div className="flex justify-center flex-wrap bg-green-800">
-            <h3 className="bg-red-600 font-rubik font-medium text-3xl text-gray-300 sm:text-4xl self-center mb-2">WORK WITH US</h3>
-            <div className="ml-auto w-full text-center bg-yellow-600 items-center ">
-              <a href="mailto:contacto@assetxtokens.io" className="text-blue-500 hover:text-green-500 underline">contacto@assetxtokens.io</a>      
+          <div className="flex justify-center gap-2 flex-wrap bg-green-800">
+            <h3 className="bg-red-600 font-rubik font-medium text-3xl text-gray-300 sm:text-4xl self-center">CONTACT US</h3>
+            <div className="flex justify-center flex-grow bg-yellow-600 items-center">
+              <a href="mailto:contacto@assetxtokens.io" className="text-blue-500 hover:text-green-500 underline">contacto@assetxtokens.io</a>
             </div>
           </div>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>

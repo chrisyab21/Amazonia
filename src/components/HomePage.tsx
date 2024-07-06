@@ -5,6 +5,7 @@ import { MissionSection } from "./MissionSection"
 import { FormSection } from "./FormSection"
 import { VisionSection } from "./VisionSection"
 import { WhatsAppButton } from "./WhatsAppButton"
+import { ProjectSection } from "./ProjectSection"
 
 
 
@@ -14,9 +15,10 @@ export const HomePage: FC = () => {
     <div className="h-full w-full">
       <NavBar />
       <Header />
+      <ProjectSection />
       <MissionSection />
-      <VisionSection />    
-      <FormSection/> 
+      <VisionSection />
+      <FormSection />
       <WhatsAppButton />
     </div>
   )
