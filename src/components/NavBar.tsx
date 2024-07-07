@@ -7,8 +7,9 @@ export const NavBar = () => {
 
 
     const [menuState, setMenuState] = useState<boolean>(false);
-    
+
     const [scrolled, setScrolled] = useState<boolean>(false);
+
 
     const navBarRef = useRef<HTMLElement>(null);
 
@@ -20,7 +21,9 @@ export const NavBar = () => {
     useEffect(() => {
 
         const handleScroll = () => {
+
             setScrolled(window.scrollY > 200);
+
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -29,6 +32,7 @@ export const NavBar = () => {
 
             window.removeEventListener('scroll', handleScroll);
         };
+
     }, []);
 
 
@@ -43,10 +47,10 @@ export const NavBar = () => {
 
 
     return (
-        <nav className={`bg-green-950 ${!scrolled && 'sm:bg-transparent'} transition-colors duration-500 relative z-50 w-full sm:fixed`} ref={navBarRef} >
-            <div className="px-2 sm:px-8 lg:px-12">
+        <nav className={`bg-blue-950 relative z-50 w-full md:fixed border-black ${scrolled ? 'border-b-[1px] border-black border-opacity-40' : 'md:bg-transparent'} transition-colors duration-500`} ref={navBarRef} >
+            <div className="px-2 sm:px-4 lg:px-10">
                 <div className="relative flex h-16 items-center">
-                    <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                         {/* <!-- Mobile menu button--> */}
                         <button
                             type="button"
@@ -74,16 +78,16 @@ export const NavBar = () => {
                             </svg>
                         </button>
                     </div>
-                    <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
-                        <div className="flex sm:mr-auto items-center">
-                            <img className="h-8 w-auto" src={logo} alt="Your Company" />
+                    <div className="flex flex-1 justify-center md:justify-between">
+                        <div className="">
+                            <img className="h-8" src={logo} alt="Amazonas" />
                         </div>
-                        <ul className="hidden gap-10 sm:ml-6 sm:flex sm:items-center">
+                        <ul className="hidden gap-6 sm:ml-6 md:flex">
                             {
                                 navBarRoutes.map((route) => (
-                                    <li key={route}>
+                                    <li key={route} >
                                         <a href={`#${route.toLowerCase()}`}
-                                            className={`h-full rounded-md px-3 py-2 text-sm font-medium ${activeRoute === route ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                                            className={`block h-full content-center text-center py-2 px-3 rounded-md font-rubik text-sm font-medium tracking-[3px] ${activeRoute === route ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
                                             onClick={() => setActiveRoute(route)}
                                         >
                                             {route}
@@ -98,7 +102,7 @@ export const NavBar = () => {
 
             {/* <!-- Mobile menu, show/hide based on menu state. --> */}
             {menuState &&
-                (<div className="sm:hidden" id="mobile-menu">
+                (<div className="md:hidden mx-2 sm:mx-4" id="mobile-menu">
                     <div className="space-y-1 px-2 pb-3 pt-2">
                         {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                         {
@@ -106,7 +110,7 @@ export const NavBar = () => {
                                 <a
                                     key={route}
                                     href={`#${route.toLowerCase()}`}
-                                    className={`block rounded-md px-3 py-2 text-base font-medium ${activeRoute === route ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                                    className={`block rounded-md px-3 py-2 text-base font-rubik font-medium tracking-widest ${activeRoute === route ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
                                     onClick={() => setActiveRoute(route)}
                                 >
                                     {route}

@@ -6,6 +6,7 @@ import arbol4 from '../assets/images/Arbol4.png'
 import arbol3 from '../assets/images/Arbol3.png'
 import emailjs from "@emailjs/browser";
 import { WhatsAppButton } from "./WhatsAppButton";
+import { FormButton } from "./FormButton";
 
 
 type contactInfo = {
@@ -169,18 +170,16 @@ export const FormSection = () => {
 
   return (
 
-    <section id="contact" className="h-[600px] flex py-20 px-14 sm:p-20 lg:px-28  bg-gray-700">
-      <div className="bg-white flex w-full h-full gap-[5%] lg:pl-[5%]">
+    <section id="contact" className="flex py-20 px-14 sm:px-20 lg:px-28  bg-AzulOscuro">
+      <div className="flex w-full h-full gap-[5%] lg:pl-[5%]">
         <div className="hidden md:flex flex-col basis-[380px] max-w-sm shrink-[2] gap-10">
           <h3 className="font-rubik text-3xl text-gray-300 font-semibold text-center">NFTs COLLECTION</h3>
           <img src={amazonGif} alt="Logo" className="h-auto rounded-xl" />
         </div>
-        <form className={`bg-orange-400 flex flex-col  gap-5 flex-grow`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
-          <div className="flex justify-center gap-2 flex-wrap bg-green-800">
-            <h3 className="bg-red-600 font-rubik font-medium text-3xl text-gray-300 sm:text-4xl self-center">CONTACT US</h3>
-            <div className="flex justify-center flex-grow bg-yellow-600 items-center">
-              <a href="mailto:contacto@assetxtokens.io" className="text-blue-500 hover:text-green-500 underline">contacto@assetxtokens.io</a>
-            </div>
+        <form className={`flex flex-col gap-5 flex-grow`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
+          <div className="flex gap-2 flex-wrap mb-2">
+            <h3 className="flex-grow text-center font-rubik font-medium text-3xl text-gray-300 sm:text-4xl self-center">CONTACT US</h3>
+            <a href="mailto:contacto@assetxtokens.io" className="flex-grow text-center text-blue-500 content-center hover:text-green-500 underline">contacto@assetxtokens.io</a>
           </div>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>
             <div className={`flex flex-col gap-2 md:basis-2/6 md:flex-grow ${errors.name && "-mb-2"}`}>
@@ -265,7 +264,7 @@ export const FormSection = () => {
             />
             {errors.subject && <span className="msg">{`${errors.subject.message}`}</span>}
           </div>
-          <textarea className="flex-shrink w-full rounded-md resize-none p-2" name="message" title="Well done"
+          <textarea className="flex-shrink w-full rounded-md resize-none p-2 mb-2" name="message" title="Well done"
             required
             value={textAreaValue}
             rows={7}
@@ -274,63 +273,10 @@ export const FormSection = () => {
             placeholder="Message"
             onChange={(event) => limitTextAreaRows(event)}
           ></textarea>
-          <button className="bg-green-600 basis-12 w-full flex-shrink-0 rounded-md">Enviar</button>
+          <FormButton />
         </form>
       </div>
     </section>
   );
 };
 
-
-
-
-
-export const FormSection2 = () => {
-
-  return (
-    <section id="contact" className="contact">
-      <div className="container aos-init aos-animate" data-aos="fade-up">
-        <div className="section-header">
-          <h2>Work with us</h2>
-        </div>
-        <div className="row gx-lg-0 gy-4">
-          <div className="col-lg-4">
-            <div className="info-container d-flex flex-column align-items-left justify-content-center">
-
-              <div className="info-item d-flex">
-                <i className="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h4>Email:</h4>
-                  <p>info@tmzn.io</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div className="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" className="php-email-form">
-              <div className="row">
-                <div className="col-md-6 form-group">
-                  <input style={{ borderRadius: 0 }} type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
-                </div>
-                <div className="col-md-6 form-group mt-3 mt-md-0">
-                  <input style={{ borderRadius: 0 }} type="email" className="form-control" name="email" id="email" placeholder="Your Email" required />
-                </div>
-              </div>
-              <div className="form-group mt-3">
-                <input style={{ borderRadius: 0 }} type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
-              </div>
-              <div className="form-group mt-3"><textarea style={{ borderRadius: 0 }} className="form-control" name="message" rows={7} placeholder="Message" required></textarea></div>
-              <div className="my-3">
-                <div className="loading">Loading</div>
-                <div className="error-message"></div>
-                <div className="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div className="text-center"><button className="" type="submit">Send Message</button></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
