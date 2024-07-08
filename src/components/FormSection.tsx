@@ -1,6 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import amazonGif from '../assets/images/NFTS S-AMZ.gif'
 import emailjs from "@emailjs/browser";
 import { ButtonComponent } from "./ButtonComponent";
@@ -32,7 +32,7 @@ export const FormSection = () => {
     const emailInputRef = useRef<HTMLInputElement | null>(null);
     const subjectInputRef = useRef<HTMLInputElement | null>(null); */
 
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  // const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
 
   const {
@@ -62,7 +62,7 @@ export const FormSection = () => {
     }; */
 
 
-  const [textAreaValue, setTextAreaValue] = useState('');
+  const [textAreaValue, setTextAreaValue] = useState<string>('');
 
 
   const limitTextAreaRows = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -126,6 +126,7 @@ export const FormSection = () => {
 
   // let nameValue = watch('name');
 
+
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
 
@@ -149,19 +150,15 @@ export const FormSection = () => {
 
     try {
 
-      // const result = await emailjs.send(
-      //   import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      //   import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      //   template,
-      //   import.meta.env.VITE_EMAILJS_ACCOUNT_PUBLIC_KEY
-      // );
-
       const emailPromise = emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID_PRUEBA,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_PRUEBA,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         template,
-        import.meta.env.VITE_EMAILJS_ACCOUNT_PUBLIC_KEY_PRUEBA
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_ACCOUNT_PUBLIC_KEY,
+        }
       );
+
 
       await toast.promise(emailPromise, {
 
@@ -174,6 +171,8 @@ export const FormSection = () => {
       //console.log('SUCCESS!', result.status, result.text);
 
       reset();
+
+      setTextAreaValue('');
 
     } catch (error: any) {
 
@@ -285,13 +284,19 @@ export const FormSection = () => {
             />
             {errors.subject && <span className="msg">{`${errors.subject.message}`}</span>}
           </div>
-          <textarea className="flex-shrink w-full rounded-md resize-none p-2 mb-2" name="message" title="Well done"
+          <textarea className="flex-shrink w-full rounded-md resize-none p-2 mb-2"
+            title="Write your message here"
+            placeholder="Message"
             required
             value={textAreaValue}
             rows={7}
             maxLength={600}
-            ref={textAreaRef}
-            placeholder="Message"
+            {...register('message', {
+              required: {
+                value: true,
+                message: "The message is required"
+              },
+            })}
             onChange={(event) => limitTextAreaRows(event)}
           ></textarea>
           <ButtonComponent disabled={isLoading} />
