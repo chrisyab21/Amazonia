@@ -40,7 +40,6 @@ export const NavBar = () => {
 
         setMenuState(state => !state)
 
-        const hola: string = `asdasd ${menuState}`
     }
 
 

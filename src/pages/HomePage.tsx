@@ -6,7 +6,6 @@ import { FormSection } from "../components/FormSection"
 import { VisionSection } from "../components/VisionSection"
 import { WhatsAppButton } from "../components/WhatsAppButton"
 import { ProjectSection } from "../components/ProjectSection"
-import { Toaster } from "react-hot-toast"
 import { ToasterComponent } from "../components/ToasterComponent"
 
 

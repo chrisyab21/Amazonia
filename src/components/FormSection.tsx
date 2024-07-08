@@ -1,6 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import amazonGif from '../assets/images/NFTS S-AMZ.gif'
 import emailjs from "@emailjs/browser";
 import { ButtonComponent } from "./ButtonComponent";
@@ -38,10 +38,8 @@ export const FormSection = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    setError,
     reset,
-    formState: { errors, isSubmitted }
+    formState: { errors }
   } = useForm<contactInfo>();
 
 
