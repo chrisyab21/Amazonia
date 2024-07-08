@@ -2,12 +2,9 @@
 import { useForm } from "react-hook-form";
 import { ChangeEvent, FormEvent, KeyboardEventHandler, useEffect, useRef, useState } from "react";
 import amazonGif from '../assets/images/NFTS S-AMZ.gif'
-import arbol4 from '../assets/images/Arbol4.png'
-import arbol3 from '../assets/images/Arbol3.png'
 import emailjs from "@emailjs/browser";
-import { WhatsAppButton } from "./WhatsAppButton";
-import { FormButton } from "./FormButton";
-
+import { ButtonComponent } from "./ButtonComponent";
+import toast from 'react-hot-toast';
 
 type contactInfo = {
   name: string,
@@ -131,10 +128,16 @@ export const FormSection = () => {
 
   // let nameValue = watch('name');
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
 
   const onSubmit = async (formData: contactInfo) => {
 
+
+
+    setIsLoading(true);
+
+    //const toastId = toast.loading('Sending')
 
     const template: emailTemplate = {
 
@@ -147,20 +150,40 @@ export const FormSection = () => {
 
 
     try {
-      const result = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        template,
-        import.meta.env.VITE_EMAILJS_ACCOUNT_PUBLIC_KEY);
 
-      console.log('SUCCESS!', result.status, result.text);
+      // const result = await emailjs.send(
+      //   import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      //   import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      //   template,
+      //   import.meta.env.VITE_EMAILJS_ACCOUNT_PUBLIC_KEY
+      // );
+
+      const emailPromise = emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID_PRUEBA,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_PRUEBA,
+        template,
+        import.meta.env.VITE_EMAILJS_ACCOUNT_PUBLIC_KEY_PRUEBA
+      );
+
+      await toast.promise(emailPromise, {
+
+        loading: 'Sending...',
+        success: 'Email sent successfully!',
+        error: 'Failed to send email.',
+
+      });
+
+      //console.log('SUCCESS!', result.status, result.text);
 
       reset();
 
     } catch (error: any) {
 
       console.log('FAILED...', error);
+
     }
+
+    setIsLoading(false);
 
   }
 
@@ -273,7 +296,7 @@ export const FormSection = () => {
             placeholder="Message"
             onChange={(event) => limitTextAreaRows(event)}
           ></textarea>
-          <FormButton />
+          <ButtonComponent disabled={isLoading} />
         </form>
       </div>
     </section>

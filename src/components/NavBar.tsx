@@ -47,7 +47,7 @@ export const NavBar = () => {
 
 
     return (
-        <nav className={`bg-blue-950 relative z-50 w-full md:fixed border-black ${scrolled ? 'border-b-[1px] border-black border-opacity-40' : 'md:bg-transparent'} transition-colors duration-500`} ref={navBarRef} >
+        <nav className={`bg-emerald-950 relative z-50 w-full md:fixed border-black ${scrolled ? 'border-b-[1px] border-black border-opacity-40' : 'md:bg-transparent'} transition-colors duration-500`} ref={navBarRef} >
             <div className="px-2 sm:px-4 lg:px-10">
                 <div className="relative flex h-16 items-center">
                     <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
