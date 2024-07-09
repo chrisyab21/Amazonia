@@ -193,13 +193,13 @@ export const FormSection = () => {
     <section id="contact" className="flex py-20 px-14 sm:px-20 lg:px-28  bg-AzulOscuro">
       <div className="flex w-full h-full gap-[5%] lg:pl-[5%]">
         <div className="hidden md:flex flex-col basis-[380px] max-w-sm shrink-[2] gap-10">
-          <h3 className="font-rubik text-3xl text-gray-300 font-semibold text-center">NFTs COLLECTION</h3>
+          <h3 className="font-rubik text-3xl text-gray-200 font-semibold text-center">NFTs COLLECTION</h3>
           <img src={amazonGif} alt="Logo" className="h-auto rounded-xl" />
         </div>
         <form className={`flex flex-col gap-5 flex-grow`} onSubmit={handleSubmit((data) => onSubmit(data))} /*ref={formRef}*/>
           <div className="flex gap-2 flex-wrap mb-2">
-            <h3 className="flex-grow text-center font-rubik font-medium text-3xl text-gray-300 sm:text-4xl self-center">CONTACT US</h3>
-            <a href="mailto:contacto@assetxtokens.io" className="flex-grow text-center text-blue-500 content-center hover:text-green-500 underline">contacto@assetxtokens.io</a>
+            <h3 className="flex-grow text-center font-rubik font-medium text-3xl text-gray-200 sm:text-4xl self-center">CONTACT US</h3>
+            <a href="mailto:contacto@assetxtokens.io" className="flex-grow text-center text-blue-700 content-center hover:text-green-500 underline">contacto@assetxtokens.io</a>
           </div>
           <div className={`flex flex-col w-full gap-5 md:flex-row`}>
             <div className={`flex flex-col gap-2 md:basis-2/6 md:flex-grow ${errors.name && "-mb-2"}`}>
